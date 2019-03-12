@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head>
+        <meta charset="UTF-8">
+        <title>Train Scheduler</title>
+
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <link rel="stylesheet" href="assets/css/style.css">
+        <script src="https://www.gstatic.com/firebasejs/5.8.6/firebase.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="assets/javascript/java.js"></script>
+
+    </head>
+
+    <body>
+        <div class="container">
+            <div class="jumbotron">
+                <h1 class="text-center">Train Scheduler</h1>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="card">
+                        <div class="card-header">
+                        <h3>Current Train Schedule</h3>
+                        </div>
+                        <div class="card-body">
+                            <div id="train-schedule">
+                                <div id="col-lg-2"><h5>Train Name</h5></div>
+                                    <div id="trainName"></div>
+                                <div id="col-lg-2"><h5>Destination</h5></div>
+                                    <div id="dest"></div>
+                                <div id="col-lg-2"><h5>Frequency (min)</h5></div>
+                                    <div id="frequency"></div>
+                                <div id="col-lg-2"><h5>Next Arrival</h5></div>
+                                    <div id="arrival"></div>
+                                <div id="col-lg-2"><h5>Minutes Away</h5></div>
+                                    <div id="away"></div>
+                                    
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br>
+
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3>Add Train</h3>
+                        </div>
+                        <div class="card-body">
+                            <form role="form">
+                                <div class="form-group row">
+                                    <label for="train-name"><h5>Add Train</h5></label>
+                                    <input class="form-control" id="name-input" type="text">
+                                </div>
+                                <div class="form-group row">
+                                    <label for="destination"><h5>Destination:</h5></label>
+                                    <input class="form-control" id="destination" type="text">
+                                </div>
+                                <div class="form-group row">
+                                    <label for="first-train-time"><h5>First Train Time (hh:mm - Military Time):</h5></label>
+                                    <input class="form control" id="first-train-time" type="datetime">
+                                </div>
+                                <div class="form-group row">
+                                    <label for="frequency"><h5>Frequency (min):</h5></label>
+                                    <input class="form control" id="frequency" type="datetime">
+                                </div>
+                                <button class="btn btn-primary" id="submit" type="submit">Submit</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </body>
+</html>

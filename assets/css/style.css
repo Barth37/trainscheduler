@@ -1,0 +1,13 @@
+.jumbotron {
+    background-image: url("../images/tracks2.jpg");
+}
+
+h1 {
+    color: white;
+}
+
+#col-lg-2 {
+    float: left;
+    padding: 20px;
+    margin-right: 40px;
+}
