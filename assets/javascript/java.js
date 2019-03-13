@@ -1,11 +1,12 @@
 var config = {
-    apiKey: "<API_KEY>",
-    authDomain: "myproject-8f3b8.firebaseapp.com",
-    databaseURL: "https://myproject-8f3b8.firebaseio.com",
-    storageBucket: "myproject-8f3b8.appspot.com"
-
-};
-firebase.initializeApp(config);
+    apiKey: "AIzaSyDukhLXiqcZ9BW2qkoVHl-cVaLL4wL0w94",
+    authDomain: "train-cbdf7.firebaseapp.com",
+    databaseURL: "https://train-cbdf7.firebaseio.com",
+    projectId: "train-cbdf7",
+    storageBucket: "",
+    messagingSenderId: "27580087374"
+  };
+  firebase.initializeApp(config);
 
 var dataRef = firebase.database();
 
@@ -29,7 +30,7 @@ $("#submit").submit(function(event) {
         dateAdded: firebase.database.ServerValue.TIMESTAMP,
     };
 
-    database.ref().push(newTrain);
+    dataRef.ref().push(newTrain);
         console.log(newTrain.name);
         console.log(newTrain.dest);
         console.log(newTrain.time);
@@ -40,34 +41,34 @@ $("#submit").submit(function(event) {
         console.log(childSnapshot.val());
         
         
-        var name = childSnapshot.val().name;
-        var dest = childSnapshot.val().dest;
-        var time = childSnapshot.val().time;
-        var freq = childSnapshot.val().freq;
+        name = childSnapshot.val().name;
+        dest = childSnapshot.val().dest;
+        time = childSnapshot.val().time;
+        freq = childSnapshot.val().freq;
 
-        var firstTimeConverted = moment(timeStart, "HH:mm").subtract(1, "years");
-        console.log(firstTimeConverted);
+        var timeConverted = moment(time, "HH:mm").subtract(1, "years");
+        console.log(timeConverted);
 
         // Current Time
         var currentTime = moment();
         console.log("CURRENT TIME: " + moment(currentTime).format("HH:mm"));
 
         // Difference between the times
-        var diffTime = moment().diff(moment(firstTimeConverted), "minutes");
-        console.log("DIFFERENCE IN TIME: " + diffTime);
+        var timeDiff = moment().diff(moment(timeConverted), "minutes");
+        console.log("DIFFERENCE IN TIME: " + timeDiff);
 
         // Time apart (remainder)
-        var tRemainder = diffTime % frequencyRate;
-        console.log(tRemainder);
+        var timeRemainder = timeDiff % freq;
+        console.log(timeRemainder);
 
         // Minute Until Train
-        var tMinutesTillTrain = frequencyRate - tRemainder;
-        console.log("MINUTES TILL TRAIN: " + tMinutesTillTrain);
+        var minutesTillTrain = freq - timeRemainder;
+        console.log("MINUTES TILL TRAIN: " + minutesTillTrain);
 
         // Next Train
-        var nextTrain = moment().add(tMinutesTillTrain, "minutes");
+        var nextTrain = moment().add(minutesTillTrain, "minutes");
         console.log("ARRIVAL TIME: " + moment(nextTrain).format("HH:mm"));
-        var formattedTime = moment(nextTrain).format("HH:mm");
+        var formTime = moment(nextTrain).format("HH:mm");
 
       // Handle the errors
     }, 
