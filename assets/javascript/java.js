@@ -25,9 +25,9 @@ $("#submit").on("click", function(event) {
   var time = moment(
     $("#first-train-time")
       .val()
-      .trim(),
-    "HH:mm".format("X")
-  );
+      .trim())
+    .format("LTS");
+  
   var freq = $("#frequency")
     .val()
     .trim();
